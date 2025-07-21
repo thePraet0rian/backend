@@ -48,7 +48,7 @@ app.post('/submit', (req, res) => {
 
 app.get('/submission-count', async (req, res) => {
 	fs.readFile(FILE_PATH, 'utf8', (err, data) => {
-		let submissions = JSON.parte(data);
+		let submissions = JSON.parse(data);
 		console.log('data');
 		console.log(data);
 		console.log(submissions);
