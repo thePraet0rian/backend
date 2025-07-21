@@ -16,13 +16,12 @@ app.post('/submit', (req, res) => {
 	const { Name, Vorname, Mail} = req.body;
 	console.log(req.body);
 	console.log('this is a test');
-	console.log(name);
-	console.log(req.body.name);
+	console.log(Name);
 
 	const newEntry = {
-		name = req.body.Name,
-		vorname = req.body.Vorname,
-		email req.body.email,
+		Name, 
+		Vorname,
+		Mail,
 	};
 
 	console.log('New Entry:')
