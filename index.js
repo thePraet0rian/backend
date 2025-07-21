@@ -14,9 +14,6 @@ const FILE_PATH = path.join(__dirname, 'submissions.json');
 
 app.post('/submit', (req, res) => {
 	const { Name, Vorname, Mail} = req.body;
-	console.log(req.body);
-	console.log('this is a test');
-	console.log(Name);
 
 	const newEntry = {
 		Name, 
@@ -24,28 +21,20 @@ app.post('/submit', (req, res) => {
 		Mail,
 	};
 
-	console.log('New Entry:')
-	console.log(newEntry);
-
-	// Read existing data (if file exists)
 	fs.readFile(FILE_PATH, 'utf8', (err, data) => {
-
 		let submissions = [];
 		if (!err && data) {
 			try {
 				submissions = JSON.parse(data);
 
-				console.log('Submissions')
-				console.log(submissions);
 			} catch (e) {
 				console.error('Error parsing existing JSON:', e);
 			}
 		}
 
-		// Add new entry
 		submissions.push(newEntry);
+		console.log(submissions);
 
-		// Write back to file
 		fs.writeFile(FILE_PATH, JSON.stringify(submissions, null, 2), err => {
 			if (err) {
 				console.error('Error writing file:', err);
