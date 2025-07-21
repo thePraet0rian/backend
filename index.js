@@ -29,6 +29,7 @@ app.post('/submit', (req, res) => {
 		if (!err && data) {
 			try {
 				submissions = JSON.parse(data);
+				console.log(submissions);
 			} catch (e) {
 				console.error('Error parsing existing JSON:', e);
 			}
