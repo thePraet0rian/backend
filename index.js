@@ -13,14 +13,16 @@ app.use(bodyParser.json());
 const FILE_PATH = path.join(__dirname, 'submissions.json');
 
 app.post('/submit', (req, res) => {
-	const { name, vorname, email } = req.body;
+	const { Name, Vorname, Mail} = req.body;
 	console.log(req.body);
 	console.log('this is a test');
+	console.log(name);
+	console.log(req.body.name);
 
 	const newEntry = {
-		name,
-		vorname,
-		email,
+		name = req.body.Name,
+		vorname = req.body.Vorname,
+		email req.body.email,
 	};
 
 	console.log('New Entry:')
