@@ -36,10 +36,6 @@ app.post('/submit', (req, res) => {
 		console.log(submissions);
 
 		fs.writeFile(FILE_PATH, JSON.stringify(submissions, null, 2), err => {
-			if (err) {
-				console.error('Error writing file:', err);
-				return res.status(500).json({ message: 'Error saving submission' });
-			}
 		});
 
 	});
