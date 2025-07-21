@@ -54,7 +54,8 @@ app.get('/submission-count', async (req, res) => {
 		console.log(submissions);
 		res.json({ data });
 		} else {
-			res.json({ JSON.stringify([0]); });
+			const stuff = JSON.stringify([0]);
+			res.json({ stuff });
 		}
 	});
 });
