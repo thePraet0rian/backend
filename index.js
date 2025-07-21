@@ -23,12 +23,18 @@ app.post('/submit', (req, res) => {
 		email,
 	};
 
+	console.log('New Entry:')
+	console.log(newEntry);
+
 	// Read existing data (if file exists)
 	fs.readFile(FILE_PATH, 'utf8', (err, data) => {
+
 		let submissions = [];
 		if (!err && data) {
 			try {
 				submissions = JSON.parse(data);
+
+				console.log('Submissions')
 				console.log(submissions);
 			} catch (e) {
 				console.error('Error parsing existing JSON:', e);
@@ -46,6 +52,7 @@ app.post('/submit', (req, res) => {
 			}
 			res.json({ message: 'Submission saved successfully' });
 		});
+
 	});
 });
 
