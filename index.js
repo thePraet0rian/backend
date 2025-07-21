@@ -47,11 +47,15 @@ app.post('/submit', (req, res) => {
 
 app.get('/submission-count', async (req, res) => {
 	fs.readFile(FILE_PATH, 'utf8', (err, data) => {
+		if (!err) {
 		let submissions = JSON.parse(data);
 		console.log('data');
 		console.log(data);
 		console.log(submissions);
 		res.json({ data });
+		} else {
+			res.json({ JSON.stringify([0]); });
+		}
 	});
 });
 
