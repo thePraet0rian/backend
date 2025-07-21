@@ -36,6 +36,7 @@ app.post('/submit', (req, res) => {
 		console.log(submissions);
 
 		fs.writeFile(FILE_PATH, JSON.stringify(submissions, null, 2), err => {
+			res.redirect('https://vini101.github.io');
 		});
 
 	});
