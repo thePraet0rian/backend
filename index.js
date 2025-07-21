@@ -46,6 +46,14 @@ app.post('/submit', (req, res) => {
 	});
 });
 
+app.get('/submission-count', async (req, res) => {
+	fs.readFile(FILE_PATH, 'utf8', (err, data) = {
+		console.log('data');
+		console.log(data);
+		res.json({ data });
+	});
+}
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
