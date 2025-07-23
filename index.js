@@ -18,7 +18,6 @@ const pool = new Pool({
 });
 pool.connect();
 
-
 app.post('/submit', async (req, res) => {
 	const {Name, Vorname, Mail} = req.body;
 	console.log(req.body);
@@ -33,7 +32,6 @@ app.post('/submit', async (req, res) => {
 	}
 });
 
-
 app.get('/submission-count', async (req, res) => {
 	try {
 		const result = await pool.query('SELECT COUNT(*) FROM user_info');
@@ -43,10 +41,13 @@ app.get('/submission-count', async (req, res) => {
 	}
 });
 
-
 app.get('/get-info', async (req, res) => {
 	const query = await pool.query('SELECT name, vorname, mail FROM user_info'); 
 	res.json(query);
 });
+
+app.get('/delete', async (req, res) => {
+	conlose.log(req.body);
+})
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
