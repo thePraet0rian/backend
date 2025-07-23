@@ -27,6 +27,7 @@ app.post('/submit', async (req, res) => {
 			'INSERT INTO user_info (name, vorname, mail) VALUES ($1, $2, $3)', 
 			[Name, Vorname, Mail]
 		);
+		res.redirect('https://vini101.github.io');
 	} catch (err) {
 		console.error('Error adding new entries to the db.')
 	}
