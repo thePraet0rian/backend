@@ -7,21 +7,21 @@ const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
-const {CLIENT} = require('pg');
-const client = new CLIENT({
+const { Pool } = require('pg');
+const pool = new Pool({
 	connectionString: process.env.DATABASE_URL,
 	ssl: {
 		rejectUnauthorize: false
 	}
 });
-client.connect();
+pool.connect();
 
 
 app.post('/submit', async (req, res) => {
 	const {Name, Vorname, Mail} = req.body;
 	// I am not sure if there is a missing semicolon in l 26
 	try {
-		await client.query(
+		await pool.query(
 			'INSERT INTO user_info (name, vorname, mail) VALUES ($1, $2, $3)', 
 			[Name, Vorname, Mail]
 		);
@@ -33,7 +33,7 @@ app.post('/submit', async (req, res) => {
 
 app.get('/submission-count', async (req, res) => {
 	try {
-		const result = await client.query('SELECT COUNT(*) FROM user_info');
+		const result = await pool.query('SELECT COUNT(*) FROM user_info');
 		console.log(result);
 		res.json({ result });
 	} catch (err) {
