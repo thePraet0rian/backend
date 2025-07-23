@@ -21,7 +21,7 @@ pool.connect();
 
 app.post('/submit', async (req, res) => {
 	const {Name, Vorname, Mail} = req.body;
-	// I am not sure if there is a missing semicolon in l 26
+	console.log(req.body);
 	try {
 		await pool.query(
 			'INSERT INTO user_info (name, vorname, mail) VALUES ($1, $2, $3)', 
@@ -36,7 +36,6 @@ app.post('/submit', async (req, res) => {
 app.get('/submission-count', async (req, res) => {
 	try {
 		const result = await pool.query('SELECT COUNT(*) FROM user_info');
-		console.log(result);
 		res.json({ result });
 	} catch (err) {
 		console.error('Error counting rows of the table.');
