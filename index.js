@@ -44,7 +44,7 @@ app.get('/submission-count', async (req, res) => {
 });
 
 
-app.get('/get-info' async (req, res) => {
+app.get('/get-info', async (req, res) => {
 	const query = await pool.query('SELECT name, vorname, mail FROM user_info'); 
 	res.json(query);
 });
